@@ -4,25 +4,24 @@ const formatHours = h => h > 12 ? h - 12 : h === 0 ? 12 : h
 const prefixZero = x => x < 10 ? `0${x}` : x
 const getMeridianPos = h => h >= 12 ? 'pm' : 'am'
 
-const Clock = props => {
-    let d = new Date()
-
-    const [timeState, setTimeState] = useState({
+const genTimeStateObj = d => {
+    return {
         h: formatHours(d.getHours()), 
         m: prefixZero(d.getMinutes()), 
         s: prefixZero(d.getSeconds()),
         meridianPos: getMeridianPos(d.getHours())
-    })
+    }
+}
+
+const Clock = props => {
+    let d = new Date()
+
+    const [timeState, setTimeState] = useState(genTimeStateObj(d))
 
     useEffect(() => {
         const timer = setInterval(() => {
-            d = new Date()
-            setTimeState({
-                h: formatHours(d.getHours()), 
-                m: prefixZero(d.getMinutes()), 
-                s: prefixZero(d.getSeconds()),
-                meridianPos: getMeridianPos(d.getHours())
-            })
+            const d = new Date()
+            setTimeState(genTimeStateObj(d))
         }, 1000)
 
         // console.log(timeState)
