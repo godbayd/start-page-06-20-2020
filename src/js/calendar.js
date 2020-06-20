@@ -1,13 +1,13 @@
 import React from 'react'
 import dayjs from 'dayjs'
 
-var duration = require('dayjs/plugin/duration')
-dayjs.extend(duration)
 
 const weekDayName = () => [
     'sunday', 'monday', 'tuesday',  'wednesday',
     'thursday', 'friday', 'saturday'
 ][dayjs().day()];
+
+
 
 const monthName = () => [
     'january', 'february', 'march', 
@@ -16,10 +16,14 @@ const monthName = () => [
     'november', 'december'
 ][dayjs().month()];
 
+
+
 const year = dayjs().year()
 
 const firstDayOfMonthIdx = dayjs().date(1).day()
 const daysInMonth = dayjs().daysInMonth()
+
+
 
 const dayNameGridNumbersArr = () => {
     let j = 0
@@ -38,6 +42,7 @@ const dayNameGridNumbersArr = () => {
     }
     return arr
 }
+
 
 
 const DayNameGrid = () => {
@@ -60,6 +65,8 @@ const DayNameGrid = () => {
     )
 }
 
+
+
 const NumCell = props => {
     const {num} = props
     const dayNumOfMonth = dayjs().date()
@@ -72,6 +79,8 @@ const NumCell = props => {
         </div>
     )
 }
+
+
 
 const NumbersGrid = props => {
     const numbersArr = dayNameGridNumbersArr()
@@ -90,6 +99,8 @@ const NumbersGrid = props => {
         </div>
     )
 }
+
+
 
 const Calendar = props => {
     return (
