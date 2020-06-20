@@ -4,43 +4,7 @@
     padding: 0;
 }
 
-$black: #000;
-
 body {
 }
 
-$cal-w: 300px;
-$cal-cell-h: $cal-w / 7;
-
-#calendar {
-    max-width: $cal-w;
-}
-
-#day-name-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    width: 100%;
-    .cell {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: grey;
-        color: white;
-        height: $cal-cell-h;
-    }
-}
- #calendar-numbers-grid {
-    display: grid;
-    grid-template-columns: repeat(7, auto);
-    width: 100%;
-    .cell {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: $cal-cell-h;
-        &.highlight {
-            background-color: black;
-            color: white;
-        }
-    }
- }
+@import './calendar';
