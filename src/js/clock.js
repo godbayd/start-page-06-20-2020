@@ -1,17 +1,20 @@
 import React, {useState, useEffect} from 'react'
 
+
 const formatHours = h => h > 12 ? h - 12 : h === 0 ? 12 : h
 const prefixZero = x => x < 10 ? `0${x}` : x
 const getMeridianPos = h => h >= 12 ? 'pm' : 'am'
 
-const genTimeStateObj = d => {
-    return {
-        h: formatHours(d.getHours()), 
-        m: prefixZero(d.getMinutes()), 
-        s: prefixZero(d.getSeconds()),
-        meridianPos: getMeridianPos(d.getHours())
-    }
-}
+
+
+const genTimeStateObj = d => ({
+    h: formatHours(d.getHours()), 
+    m: prefixZero(d.getMinutes()), 
+    s: prefixZero(d.getSeconds()),
+    meridianPos: getMeridianPos(d.getHours())
+})
+
+
 
 const Clock = props => {
     let d = new Date()
@@ -49,5 +52,6 @@ const Clock = props => {
         </div>
     )
 }
+
 
 export default Clock
