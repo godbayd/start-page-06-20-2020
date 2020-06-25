@@ -4,14 +4,26 @@ import React from 'react'
 const LinkColumn = props => {
     const {name:categoryName, links} = props.catObj
     return (
-        <ul>
-            <h3>{categoryName}</h3>
+        <ul 
+            className="col"
+            style={{
+                marginRight: 40
+            }}
+        >
+            <h3 className="cal-name">{categoryName}</h3>
             {
                 links.map((linkObj, n) => {
                     const {name, url} = linkObj
                     return (
                         <li key={'col-link-' + n}>
-                            <a href={url} target="_blank">{name}</a>
+                            <a 
+                                href={url} 
+                                target="_blank" 
+                                className="link"
+                                rel="noopener noreferrer"
+                            >
+                                {name}
+                            </a>
                         </li>
                     )
                 })
@@ -27,6 +39,9 @@ const LinkColumnsContainer = props => {
     return (
         <div 
             id="link-columns-container"
+            style={{
+                display: 'flex'
+            }}
         >
             {
                 linkCategories.map((catKey, n)=> {
@@ -34,7 +49,7 @@ const LinkColumnsContainer = props => {
                     return (
                         <LinkColumn 
                             catObj={catObj} 
-                            key={'link-col-'+n}
+                            key={'link-col-' + n}
                         />
                     )
                 })

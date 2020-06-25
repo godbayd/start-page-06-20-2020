@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Calendar from './calendar'
 import Clock from './clock'
 import LinkColumnsContainer from './link-column'
+import GithubGraph from './github-graph'
 
 const linkColModel = {
     entertainment: {
@@ -62,10 +63,28 @@ const linkColModel = {
 }
 
 
+// fetch('http://localhost:8000/api')
+//     .then(d => d.json())
+//     .then(d => console.log(d))
+
 const App = () => {
+    const [apiData, setApiData] = useState([])
+    useEffect(() => {
+        fetch('/api') //  this works because of proxy
+            .then(d => d.json())
+            .then(data => {
+                // console.log(data.map(a => a[1]))
+                setApiData(data)
+            })
+    }, [])    
     return (
         <div id="app">
-            <LinkColumnsContainer linkColumnsModel={linkColModel}/>
+            <GithubGraph 
+                apiData={apiData}
+            />
+            <LinkColumnsContainer 
+                linkColumnsModel={linkColModel}
+            />
             <Clock />
             <Calendar />
         </div>
